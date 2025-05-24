@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>INFORME TÉCNICO Nº 969</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            width: 750px;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            width: 180px;
+            height: auto;
+        }
+
+        h2 {
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .row label {
+            flex: 1;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .row label:last-child {
+            margin-right: 0;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        textarea {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.1);
+            margin-right: 6px;
+            accent-color: #333;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .checkbox-btn {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #e00a0a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e00a0a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 6px;
+            text-align: left;
+        }
+
+        .signature-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .signature {
+            width: 45%;
+            text-align: center;
+        }
+
+        .signature input[type="text"] {
+            width: 100%;
+            text-align: center;
+            border: none;
+            border-bottom: 1px solid #000;
+            background: transparent;
+            font-size: 14px;
+            padding-bottom: 4px;
+        }
+
+        .signature-label {
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <!-- Logo -->
+    <img src="tec.png" alt="Logo" class="logo">
+
+    <h2>INFORME TÉCNICO Nº 969</h2>
+
+    <form action="guardar.php" method="POST">
+        <div class="row">
+            <label>Fecha:<input type="date" name="fecha" required></label>
+            <label>Cliente:<input type="text" name="cliente" required></label>
+        </div>
+
+        <div class="row">
+            <label>Dirección:<input type="text" name="direccion" required></label>
+        </div>
+
+        <div class="row">
+            <label>Marca:<input type="text" name="marca"></label>
+            <label>Cont. B/N:<input type="text" name="cont_bn"></label>
+        </div>
+
+        <div class="row">
+            <label>Modelo:<input type="text" name="modelo"></label>
+            <label>Cont. Color:<input type="text" name="cont_color"></label>
+        </div>
+
+        <div class="row">
+            <label>Serie:<input type="text" name="serie"></label>
+            <label>Cont. Escáner:<input type="text" name="cont_escaner"></label>
+        </div>
+
+        <div class="row">
+            <label>Ubicación:<input type="text" name="ubicacion"></label>
+            <label>Hora - Inicio:<input type="time" name="hora_inicio"></label>
+            <label>Salida:<input type="time" name="hora_salida"></label>
+        </div>
+
+        <fieldset>
+            <legend>Tipo de Servicio:</legend>
+            <div class="row">
+                <label><input type="checkbox" name="tipo_servicio[]" value="alquiler"> Alquiler</label>
+                <label><input type="checkbox" name="tipo_servicio[]" value="servicio"> Servicio</label>
+                <label><input type="checkbox" name="tipo_servicio[]" value="garantia"> Garantía</label>
+                <label><input type="checkbox" name="tipo_servicio[]" value="diagnostico"> Diagnóstico</label>
+                <label><input type="checkbox" name="tipo_servicio[]" value="venta"> Venta</label>
+                <label><input type="checkbox" name="tipo_servicio[]" value="otros"> Otros</label>
+            </div>
+        </fieldset>
+
+        <div class="row">
+            <label>Problema Reportado:<input type="text" name="problema_reportado"></label>
+        </div>
+
+        <fieldset>
+            <legend>Tipo de Mantenimiento:</legend>
+            <div class="row">
+                <label><input type="checkbox" name="tipo_mantenimiento[]" value="preventivo"> Preventivo</label>
+                <label><input type="checkbox" name="tipo_mantenimiento[]" value="correctivo"> Correctivo</label>
+                <label><input type="checkbox" name="tipo_mantenimiento[]" value="instalacion"> Instalación</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Mantenimiento realizado a:</legend>
+            <div class="button-grid">
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="unidad adf"> Unidad ADF</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="unidad laser"> Unidad Láser</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="impresion"> Impresión</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="instalacion de toner"> Instalación de Tóner</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="unidad escaner"> Unidad Escáner</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="unidad fusora"> Unidad Fusora</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="escaner"> Escáner</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="unidad transferencia"> Unidad Transferencia</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="unidad revelado"> Unidad de Revelado</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="transporte papel"> Transporte de Papel</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="equipo"> Equipo</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="unidad imagen"> Unidad de Imagen</label>
+            </div>
+            <div class="button-grid-2">
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="tarjetas electronicas"> Tarjetas Electrónicas</label>
+                <label class="checkbox-btn"><input type="checkbox" name="mantenimiento[]" value="accesorios"> Accesorios</label>
+            </div>
+        </fieldset>
+
+        <div class="row">
+            <label>Observación:
+                <textarea name="observacion" rows="4"></textarea>
+            </label>
+        </div>
+
+        <div>
+            <label>Partes a reemplazar o cotizar:</label>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><input type="text" name="cantidad1"></td><td><input type="text" name="descripcion1"></td></tr>
+                    <tr><td><input type="text" name="cantidad2"></td><td><input type="text" name="descripcion2"></td></tr>
+                    <tr><td><input type="text" name="cantidad3"></td><td><input type="text" name="descripcion3"></td></tr>
+                    <tr><td><input type="text" name="cantidad4"></td><td><input type="text" name="descripcion4"></td></tr>
+                    <tr><td><input type="text" name="cantidad5"></td><td><input type="text" name="descripcion5"></td></tr>
+                    <tr><td><input type="text" name="cantidad6"></td><td><input type="text" name="descripcion6"></td></tr>
+                    <tr><td><input type="text" name="cantidad7"></td><td><input type="text" name="descripcion7"></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="signature-row">
+            <div class="signature">
+                <div class="signature-label">Firma del técnico encargado</div>
+                <input type="text" name="firma_tecnico" placeholder="Escriba aquí...">
+            </div>
+            <div class="signature">
+                <div class="signature-label">Firma del cliente</div>
+                <input type="text" name="firma_cliente" placeholder="Escriba aquí...">
+            </div>
+        </div>
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+
+</body>
+</html>
